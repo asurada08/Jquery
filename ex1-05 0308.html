@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>애니메이션 효과</title>
+  <style>
+  *{margin:0;padding:0;}/*초기화*/
+  #box1{width:100px;height:100px;background:#f00;position:relative;border-radius:50px;}
+  /*border-radius:50px; 동그라미 만드려고 넣음*/
+  </style>
+  <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+  <script>
+  $(function(){
+	let cnt=0;
+	s=setInterval(function(){
+		cnt++;
+		if(cnt==2) clearInterval(s);
+	$("#box1").animate({
+		left:"650px",//오른쪽으로 650px 이동
+		width:"200px",//박스 사이즈
+		height:"200px",
+		opacity:0.5//투명도
+	},3000).animate({
+		top:"650px",//아래로 650px 이동
+		left:"0px",//왼쪽으로 0px이동
+		width:"50px",//박스 사이즈
+		height:"50px",
+		opacity:1//투명도
+	},3000).animate({
+		left:"650px",//왼쪽으로 0px이동
+		top:"650px",//아래로 650px 이동
+		width:"200px",//박스 사이즈
+		height:"200px",
+		opacity:0.5//투명도
+	},3000).animate({
+		left:"0px",//왼쪽으로 0px이동
+		top:"0px",//아래로 650px 이동
+		width:"50px",//박스 사이즈
+		height:"50px",
+		opacity:1//투명도
+	},3000).animate({
+		left:"0px",//왼쪽으로 0px이동
+		top:"650px",//아래로 650px 이동
+		width:"200px",//박스 사이즈
+		height:"200px",
+		opacity:0.5//투명도
+	},3000).animate({
+		left:"650px",//왼쪽으로 0px이동
+		top:"650px",//아래로 650px 이동
+		width:"50px",//박스 사이즈
+		height:"50px",
+		opacity:1//투명도
+	},3000).animate({
+		left:"650px",//왼쪽으로 0px이동
+		top:"0px",//아래로 650px 이동
+		width:"200px",//박스 사이즈
+		height:"200px",
+		opacity:0.5//투명도
+	},3000).animate({
+		left:"0px",//왼쪽으로 0px이동
+		top:"0px",//아래로 650px 이동
+		width:"50px",//박스 사이즈
+		height:"50px",
+		opacity:1//투명도
+	},3000);
+	});//setInterval
+  });//ready
+  </script>
+ </head>
+ <body>
+  <div id="box1">박스~박스1</div>
+ </body>
+</html>
+<!--
+애니메이션(Animation)
+선택요소를 움직이거나 크기를 변형시킬 때에는 애니메이션 효과를 적용합니다 
+콜백함수:애니메이션 효과의 진행이 끝난 후에 실행되는 함수, 생략가능
+형식
+$('선택요소').animate({애니메이션 속성},반응속도,콜백함수);
+만응속도:객체 상태의 변화(이벤트)가 발생했을 경우이러한 사실을 함수를 통해 전달(키보드, 마우스, Ajax) -->

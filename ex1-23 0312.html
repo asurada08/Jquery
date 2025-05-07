@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>div를 누르면 해당 배경색으로 바꾸기</title>
+  <style>
+  body{font-family:Verdana,Geneva;font-size:13px;}
+  #colorPicker div
+  {float:left;width:70px;height:70px;text-align:center;color:#000;border:#000 thin solid;margin-right:5px;}
+  </style>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/jquery-ui-1.13.0.js"></script>
+  <script>
+  $(document).ready(function(){
+	$("#colorPicker div").each(function(index){//선택된 컬러 배경화면을 변경하는 함수
+		$(this).css("background-color",$(this).text());
+		console.log(index);
+	});//each
+	$("#colorPicker div").click(function(){//변경할 배경화면 컬러 클릭 함수
+		let color=$(this).text();
+		$("body").animate({"background-color":color},1000);
+		console.log("선택한 것 = ",+color);
+	});//click
+  });//ready
+  </script>
+ </head>
+ <body>
+  <div id="colorPicker">
+	<div>red</div>
+	<div>maroon</div>
+	<div>yellow</div>
+	<div>green</div>
+	<div>blue</div>
+	<div>navy</div>
+	<div>purple</div>
+  </div>
+ </body>
+</html>
+<!--
+ui플러그인 삽입
+ui플러그인은 jquery라이브러리를 3.6.0버전으로 업 했기 때문에 ui버전을 1.13.0버전을 사용해야함
+ - animate()함수는 비수치형에는 속성값을 줄 수 없다 (작동하려면 ui API를 적용해야함)-->

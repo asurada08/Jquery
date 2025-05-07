@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>숙제를 jquery로</title>
+  <style>
+  div{border-top: 0px; border-right: 0px; background: #ffffcc; border-bottom: 0px; position: absolute; left: 200px; border-left: 0px; top: 100px}
+  </style>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/jquery-migrate-1.4.1.min.js"></script>
+  <script>
+  $(function(){
+	$("#b1").click(function(){
+		sub();
+	});//#b1.click 제출
+	$("#b2").click(function(){
+		reset();
+	});//#b1.click 리셋
+	function sub(){
+		let gender = $("input:radio[name='gender']:checked").val();
+		let level = $("input:radio[name='level']:checked").val();
+		let searchArr = [];
+		let search= $("input:checkbox[name='search']:checked");
+		$(search).each(function(){
+			searchArr.push($(this).val());
+		});
+		let text = $("#text").val();
+		alert(gender+"\n"+level+"\n"+searchArr+"\n"+text);
+	}//제출
+	function reset(){
+		$("input:radio[name='gender']").prop("checked",false);
+		$("input:radio[name='level']").prop("checked",false);
+		$("input:checkbox[name='search']").prop("checked",false);
+		$("#text").attr("value","");
+	}//취소
+  });//ready
+  </script>
+ </head>
+ <body>
+  <div>
+  <h3>온라인 앙케이트</h3>
+  <hr>
+	1. 성별<br>
+	남 <input type="radio" name="gender" value="남" checked>
+	여 <input type="radio" name="gender" value="여"><br><br>
+	2. 본사의 제품을 평가한다면?<br>
+	매우만족 : <input type="radio" name="level" value="매우만족" checked>
+	그저 그렇다 : <input type="radio" name="level" value="그저그렇다">
+	불만족스럽다 : <input type="radio" name="level" value="불만족스럽다"><br>
+	<br>3. 가장 자주 사용하는 검색엔진은?<br>
+	심마니 : <input type="checkbox" name="search" value="심마니">
+	네이버 정보탐정 : <input type="checkbox" name="search" value="네이버 정보탐정">
+	야후 : <input type="checkbox" name="search" value="야후">
+	라이코스 : <input type="checkbox" name="search" value="라이코스">
+	알타비스타 : <input type="checkbox" name="search" value="알타비스타"><br><br>
+	4. 본사에게 하고 싶은 말은?<br>
+	<textarea id="text" rows="4" cols="55"></textarea><br>
+	<center>
+		<button id="b1">앙케이트 제출</button> <button id="b2">앙케이트 취소</button>
+	</center>
+  </div>
+ </body>
+</html>

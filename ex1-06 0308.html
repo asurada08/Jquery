@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>애니메이션 효과 및 버튼 생성</title>
+  <style>
+  *{margin:0;padding:0;}/*초기화*/
+  #box1{width:50px;height:50px;background:#f00;position:relative;margin-top:200px;margin-left:70px/*if문 삽입시 추가*/}
+  </style>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script>
+  /*버튼을 여러번 클릭하면 요소가 혼자서 움직입니다 이런 현상을 없애려면
+  clearQueue():큐에 쌓인 효과들을 삭제 / stop():현재 진행중인 효과를 정지시킴*/
+  $(function(){
+	$("#rb").click(function(){
+		if($("#box1").offset().left >= $("body").width()-$("#box1").width()){
+			$("#box1").offset().left-=500+"px";
+			alert($("#box1").offset().left);
+		}else{
+			$("#box1").stop().animate({left:"+=100px"},500);
+		}
+		//$("#box1").stop().animate({left:"+=100px"},500);
+		//console.log($("#box1").offset());
+    });//rb
+	$("#lb").click(function(){//70마진 적용
+		if($("#box1").offset().left<=70){
+			alert($("#box1").offset().left);
+			$("#box1").offset().left+=500+"px";
+		}else{
+			$("#box1").stop().animate({left:"-=100px"},500);
+		}
+		//$("#box1").stop().animate({left:"-=100px"},500);
+		//	console.log($("#box1").offset());
+    });//lb
+	$("#ub").click(function(){
+		if($("#box1").offset().top >= $("body").height()-$("#box1").width()){
+			$("#box1").offset().top-=500+"px";
+			alert($("#box1").offset().left);
+		}else{
+			$("#box1").stop().animate({top:"+=100px"},500);
+		}
+		//$("#box1").stop().animate({top:"-=100px"},500);
+		//	console.log($("#box1").offset());
+    });//ub
+	$("#db").click(function(){
+		$("#box1").stop().animate({top:"+=100px"},500);
+			console.log($("#box1").offset());
+    });//db
+  });//ready
+  </script>
+ </head>
+ <body>
+  <div id="box1"></div>
+  <p>
+	<button id="lb">◀</button>
+	<button id="rb">▶</button>
+	<button id="ub">▲</button>
+	<button id="db">▼</button>
+  </p>
+ </body>
+</html>

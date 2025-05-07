@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>val을 활용해서 폼요소에 값 설정하기</title>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script>
+  $(document).ready(function(){
+	$("input").keyup(function(){//input 요소에 키가 눌리면 함수 호출
+		let value=$(this).val();//input에 value값을 얻어오기 this는 객체 자신
+		report(value);//함수 호출하면서 value값을 넘겨 주기
+	});//keyup
+	$("button").click(function(){
+		$("input").val("val 메소드 호출중...");//자바스크립트의 value와 같음
+		$("input").keyup();//누르고 때고
+	});//click
+	function report(msg){
+		$("#console").text(msg);//div영역 자바스크립트의 textContent, text 와 같음
+	}
+  });//ready
+  /*
+  선택요소.val();		: 선택요소에 값을 얻어오기
+  선택요소.val("값");	: 선택요소에 값을 설정
+  선택요소.text();		: 선택요소에 텍스트노드를 얻어오기
+  선택요소.text("값");	: 선택요소에 택스트노드를 설정하기
+  */
+  </script>
+ </head>
+ <body>
+  <button>reset</button>
+  <input type="text" value="val 메소드 연습중..." size="80">
+  <div id="console"></div>
+ </body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>setintver함수 사용하여 이미지 순서 바꾸기</title>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script>
+  $(document).ready(function(){
+	let i=0;
+	$("img").css("width",250);//이미지 크기 설정
+	//3초마다 반복 실행
+	let s=setInterval(function(){
+		$("img").first().appendTo("body");
+		i++;
+		if(i>=10){
+			clearInterval(s);//반복수행 중지
+		}
+	},1000);//s 1초마다 반복 수행
+  });//ready
+  </script>
+ </head>
+ <body>
+  <img src="img/Koala.jpg">
+  <img src="img/Lighthouse.jpg">
+  <img src="img/Hydrangeas.jpg">
+  <img src="img/Jellyfish.jpg">
+  <img src="img/Desert.jpg">
+ </body>
+</html>

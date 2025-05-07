@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>button-text-password-폼요소 값 얻어오기</title>
+  <style>
+  div{padding:5px; width:300px;}
+  .item{float:left; width:100px;}
+  </style>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/jquery-migrate-1.4.1.min.js"></script>
+  <script>
+  function join(){
+	location="ex1-10-1.html"
+  };
+
+  $(document).ready(function(){//문서 모두 읽어온 후 수행
+	$("#userId").focus();
+	
+	$("#result").click(function(){
+		$("#d").html("아이디 : "+ $("#userId").val()+"<br>비밀번호 : "+ $("#pwdConfirm:password").val());
+	});	//click#result
+	$("#regBtn").click(function(){//회원가입버튼 클릭
+		invalidItem();//유효성 체크할 함수 호출
+	});//click#regBtn
+	$("#resBtn").click(function(){//취소버튼 클릭
+		clearInput();//이전에 입력값 모두 제거
+	});//click#resBtn
+	function invalidItem(){//유효성 체크 함수
+		if($("#userId").attr("value")==""){
+			alert("아이디를 입력하세요");
+			$("#userId").focus();//커서가 id 텍스트박스에서 깜빡깜빡해서 제자리에 있어야함.
+			return false;//이벤트 무시
+		}//if end
+		let userName=$("#userName").attr("value");//아이디의 텍스트박스의 속성값이 있으면 아래문자
+		if(userName==""){//아이디의 텍스트 박스의 속성값이 비었으면 실행
+			alert("이름을 입력하세요");
+			$("#userName").focus();
+			return false;
+		}//if end
+		if(($("#pwd:password").val()=="") || ($("#pwdConfirm:password").val()=="")){
+			alert("암호를 입력하세요");
+			$("#pwd").focus();
+			return false;
+		}//if end
+		if(($("#pwd:password").val()) != ($("#pwdConfirm:password").val())){
+			alert("암호가 일치하지 않습니다");
+			$("##pwd").focus();
+			return false;
+		}//if end
+		alert(userName+"님 회원가입을 축하합니다");
+		//f.submit();//1. action="ex1-10-1.html"
+		//setTimeout("location="ex1-10-1.html"//2.
+		//location="ex1-10-1.html";//3.
+		setTimeout("join()",1000);
+	}//invalidItem
+	function clearInput(){
+		$("#userId").attr("value","");
+		$("#userName").attr("value","");
+		$("#pwd:password").attr("value","");
+		$("#pwdConfirm:password").attr("value","");
+		$("#userId").focus();
+		$("#d").html("");
+	}//clearInput
+  });//ready
+  </script>
+ </head>
+ <body>
+  <center>
+	<div>
+		<span class="item">아이디</span>
+		<input type="text" id="userId" value="">
+	</div>
+	<div>
+		<span class="item">이름</span>
+		<input type="text" id="userName" value="">
+	</div>
+	<div>
+		<span class="item">암호</span>
+		<input type="password" id="pwd" value="">
+	</div>
+	<div>
+		<span class="item">암호확인</span>
+		<input type="password" id="pwdConfirm" value="">
+	</div>
+	<form  name='f' >
+		<input type="button" value="회원가입" id="regBtn">
+		<input type="button" value="결과" id="result">
+		<input type="button" value="취소" id="resBtn">
+	</form>
+	<div id="d"> </div>
+  </center>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>jQuery 맛보기</title>
+  <!--jQueryrk 꼭 나와야 한다-->
+  <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+  <script>
+  function showMe(){
+	$('img').show();
+  }
+  function hideMe(){
+	$('img').hide();
+  }
+  </script>
+ </head>
+ <body>
+  <h1>jQuery 맛보기<h1>
+  <form>
+	<input type="button" value="표시하기" onclick="showMe()">
+	<input type="button" value="감추기" onclick="hideMe()">
+  </form>
+  <img src="img/Koala.jpg">
+ </body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>스크롤 메소드사용 윈도우 무한스크롤</title>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/jquery-migrate-1.4.1.min.js"></script>
+  <script>
+  $(function(){
+	console.log("초기스크롤 "+$(window).scrollTop()+"초기윈도우 "+$(window).height()+"초기문서 "+$(document).height());
+	/*$(window).scrollTop()스크롤의 높이 / $(window).height()윈도우의 높이 / $(document).height() 문서의 높이*/
+	$(window).scroll(function(){
+		let scrollHeight=$(window).scrollTop()+$(window).height();
+		let documentHeight=$(document).height();
+
+		console.log("스크롤 높이 "+$(window).scrollTop()+"윈도우높이 "+$(window).height()+"문서 높이 "+$(document).height());
+		if(scrollHeight == documentHeight){
+			for(let i=0;i<10;i++){
+				$("<h1>무한스크롤</h1>").appendTo("body");
+			}//for
+		}//if
+	});//scroll
+  });//ready
+
+  //처음 실행시 초기화면 25줄이라 보통 이야기함.
+  $(document).ready(function(){
+	for(let i=0;i<25;i++){
+		$("<h1>"+i+"무한스크롤 초기값</h1>").appendTo("body");//body 뒤에다 추가를 하도록 하겠다는 코드
+	}//for
+  });//ready
+  </script>
+ </head>
+ <body>
+ </body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>테이블 해당 줄칸에 색 적용하기</title>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/jquery-migrate-1.4.1.min.js"></script>
+  <style>
+	table{margin:100px auto;}
+	.odd{background:#ffff00;}/*노랑*/
+	th{background:#ff0033;}/*빨강*/
+	th,td{padding:5px;font-size:small;}
+	.even{background:#00ffcc;}/*초록*/
+	.hover{background:#9900ff;}/*보라*/
+  </style>
+  <script>
+  $(document).ready(function(){
+	$("th:nth-child(odd)").addClass("odd");//홀수 제목칸에 클래스 추가
+	$("tr:nth-child(odd)").addClass("even");//짝수 줄에 클래스 추가
+	//줄의 적용---------------------------------------------------
+	$("tr:not(:first-child").mouseover(function(){//제목줄 빼고
+		$(this).addClass("hover");//해당줄에 class 부여
+	}).mouseout(function(){
+		$(this).removeClass("hover");//해당줄에 class 부여
+	});//mouseover
+	//칸의 적용---------------------------------------------------
+	$("td").mouseover(function(){
+		// 0 % 5 + 1 순번1의 위치 
+		let a = $("td").index(this) % $("th").size()+1;//순번 부여
+		console.log(a);//칸(인덱스) 순번
+		/*테이블 위에 <span> 선택한 위치 : 5 1 </span>*/
+		$("<center><span>"+"선택한위치 "+($("td").index(this))+"&nbsp;&nbsp;"+a+"</span></center>").insertBefore("table");//가운데정렬
+		//$("td").size()제목칸의 갯수를 구하기, 해당줄에 해당칸 = (해당 칸의 위치(인덱스) % 제목칸의 칸수+1)
+		$("td:nth-child("+($("td").index(this) % $("th").size()+1)+")").addClass("hover");
+	}).mouseout(function(){
+		$("span").remove();
+		$("td:nth-child("+($("td").index(this) % $("th").size()+1)+")").removeClass("hover");
+	});//mouseover end
+  });//ready
+  </script>
+ </head>
+ <body>
+  <table border="1" align="center">
+  <tr>
+	<th>순번</th>
+	<th>이름</th>
+	<th>전화번호</th>
+	<th>부서</th>
+	<th>주소</th>
+  </tr>
+  <tr>
+	<td>1</td>
+	<td>김태형</td>
+	<td>010-0000-0000</td>
+	<td>감독</td>
+	<td>서울</td>
+  </tr>
+  <tr>
+	<td>2</td>
+	<td>전준우</td>
+	<td>010-1111-1111</td>
+	<td>타자</td>
+	<td>경주</td>
+  </tr>
+  <tr>
+	<td>3</td>
+	<td>김원중</td>
+	<td>010-2222-2222</td>
+	<td>투수</td>
+	<td>광주</td>
+  </tr>
+  <tr>
+	<td>4</td>
+	<td>한동희</td>
+	<td>010-3333-3333</td>
+	<td>타자</td>
+	<td>부산</td>
+  </tr>
+  <tr>
+	<td>5</td>
+	<td>구승민</td>
+	<td>010-5555-5555</td>
+	<td>투수</td>
+	<td>서울</td>
+  </tr>
+  <tr>
+	<td>6</td>
+	<td>김민석</td>
+	<td>010-6666-6666</td>
+	<td>타자</td>
+	<td>서울</td>
+  </tr>
+  <tr>
+	<td>7</td>
+	<td>정훈</td>
+	<td>010-7777-7777</td>
+	<td>타자</td>
+	<td>인턴</td>
+  </tr>
+  <tr>
+	<td>8</td>
+	<td>박세웅</td>
+	<td>010-8888-8888</td>
+	<td>투수</td>
+	<td>대구</td>
+  </tr>
+  </table>
+ </body>
+</html>

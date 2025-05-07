@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>event target함수 이용해서 이미지 확대 축소 하기</title>
+  <style>
+  img{width:140px;height:120px;}
+  </style>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/jquery-migrate-1.4.1.min.js"></script>
+  <script>
+  $(document).ready(function(){
+	/*$("img").bind("click",function(e){
+		//이벤트 정보를 갖고 있는 대상, 클릭한 객체가 갖고 있는 요소
+		let $target=$(e.target);
+		$target.width($target.width()+20);
+		$target.height($target.height()+20);
+	});*/ //ex)
+	$("img").bind({
+		"click":function(e){
+			let t=$(e.target);//==this
+			t.width(t.width()+20);
+			t.height(t.height()+20);
+		},
+		"mouseout":function(){//더이상 줄어들지 않게 하려면 초기값을 주고 if로 더이상 줄지 않게 해야함.
+			t=$(this);
+			t.width(t.width()-20);
+			t.height(t.height()-20);
+		}
+	});//bind
+  });//ready
+  </script>
+ </head>
+ <body>
+  <img src="img/photo6.jpg">
+ </body>
+</html>
+<!--
+이벤트 처리시 어떤 이벤트가 어디에서 발생하였는지, 이벤트에 관한 정보가 필요 할 때가 있다. 
+이러한 정보는 이벤트 객체 형태로 얻어진다.이벤트 핸들러의 매개변수로 전달되어 온다 
+이벤트 정보가 필요없으면 이벤트 핸들러의 매개변수를 생략하지만, 
+이벤트 발생정보가 필요할때는 동작함수(익명함수=콜백함수=이벤트핸들러)를 정의할 때 매개변수를 추가 기술하면 된다
+이벤트가 발생한 위치, 이벤트가 발생할 때 사용된 키보드/마우스의 키값에 관한 정보가 들어있다
+이런 정보들은 이벤트 객체의 프로퍼티 값으로 존재.-->

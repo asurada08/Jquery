@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>hasClass 사용해서 박스 선택하기</title>
+  <script src="js/jquery-3.6.0.js"></script>
+  <style>
+  div{width:100px;height:100px;border:1px solid #000; cursor:pointer; margin:4px; float:left;}
+  .toggleStyle{background:blue;color:white;}
+  </style>
+  <script>
+  $(function(){
+	$("div").hover(function(){//div가 클릭 되었을때
+		//this = div가 class=toggleStyle를 가지고 있으면 실행
+		if($(this).hasClass("toggleStyle")){
+			//div의 class를 삭제
+			$(this).removeClass("toggleStyle");
+		}else{//class=toggleStyle를 가지고 있지 않으면 실행 클래스를 추가해주어 파랑색 적용
+			$(this).addClass("toggleStyle");
+		}
+	});//hover
+  });//ready
+  </script>
+ </head>
+ <body>
+  <div>hasClass()는 선택된 엘리먼트에 해당 클래스가</div>
+  <div>적용되어 있으면 true를 리턴하고</div>
+  <div>아직 적용되어 있지 않으면 false를 리턴한다</div>
+ </body>
+</html>

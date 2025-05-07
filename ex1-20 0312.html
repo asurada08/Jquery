@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>아코디언 위아래로 열고 닫기</title>
+  <style>
+  *{margin:0;padding:0;}
+  dl{width:400px;margin:50px auto;}/*가로정렬*/
+  dl dt{background:#6699ff;cursor:pointer;border:1px solid #cc0033:}
+  dl dd{border:1px solid #7cadb6;border-top:none;height:300px;}
+  </style>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script>
+  $(document).ready(function(){
+	$("dd:not(:first)").css("display","none");//초기화면 첫번째 제목만 display되고 나머지 제목은 none
+	$("dl dt").click(function(){//dl dt==this의 다음 dd가 보이지 않는 상태라면 아래 실행
+		if($("+dd",this).css("display")=="none"){
+			//현재 선택한 제목줄의 형제요소 dd요소가 위로 말아올라간다
+			$(this).siblings("dd").slideUp("slow");//dd감추기
+			//현재 선택한 요소의 dd가 아닌 다음 요소의 dd가 말아서 내려간다
+			$("+dd",this).slideDown("slow");//표시
+		}//if
+	});//click
+  });//ready
+  </script>
+ </head>
+ <body>
+  <dl>
+	<dt>나승엽 '1루수 만들기 프로젝트'</dt>
+	<dd><p>롯데 자이언츠 영건 내야수 나승엽이 올 시즌을 앞두고 1루수 보직에 도전하고 있다. 나승엽은 올해 시범경기 주전 1루수로 출전하고 있다. 
+	방망이는 일단 합격이다. 시범경기 3경기에서 8타수 3안타, 3타점을 기록 중이다. 군복무를 마치고 복귀한 나승엽은 프로 4년 차다. 190cm 큰 신장에 마른 체형이었으나 올해는 체구도 많이 좋아졌다. 나승엽은 퓨처스리그에서 2시즌을 보내며 많은 경험을 쌓았다. 올해는 1군 무대에서 주전 1루수를 노리고 있다. 방망이는 일단 합격이지만, 수비는 아직 미지수다. 롯데 김태형 감독은 스프링캠프에서 올해 주전 1루수는 나승엽이라고 밝혔다. 유망주 나승엽에게 힘을 실어줬다.</p></dd>
+	<dt>Html</dt>
+	<dd><p>롯데 자이언츠가 2024 시즌 정규리그 개막을 목전에 두고 중심타자 한동희의 부상 이탈이라는 악재를 맞았다. 한동희는 오는 6월 군복무를 위해 팀을 떠날 가능성이 높은 가운데 입대 전 1군 경기 출전은 쉽지 않을 것으로 보인다.</p></dd>
+	<dt>Jsp</dt>
+	<dd><p>롯데 자이언츠의 2017년 1차지명 투수 윤성빈(25)은 11일 김해 상동구장에서 열린 두산 베어스 2군과의 연습경기에 등판해 1이닝 무실점을 기록했다. 1이닝을 3타자로, 그리고 모두 탈삼진으로 솎아내는 피칭을 선보였다.</p></dd>
+	</dl>
+ </body>
+</html>
